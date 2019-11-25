@@ -5,9 +5,17 @@ using PerformanceBenchmarker.Models;
 
 namespace PerformanceBenchmarker.TestExcuters
 {
-    static class FastMemberTest
+    public class FastMemberTest : ITestExcuter
     {
-        public static long ExcuteTest(string connectionString, string query)
+        public string TestTitle
+        {
+            get
+            {
+                return "FastMember";
+            }
+        }
+
+        public long ExcuteTest(string connectionString, string query)
         {
             Stopwatch watch = new Stopwatch();
             watch.Start();

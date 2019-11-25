@@ -5,9 +5,16 @@ using System.Diagnostics;
 
 namespace PerformanceBenchmarker.TestExcuters
 {
-    static class DataReaderTest
+    public class DataReaderTest : ITestExcuter
     {
-        public static long ExcuteTest(string connectionString, string query)
+        public string TestTitle
+        {
+            get
+            {
+                return "DataReader";
+            }
+        }
+        public long ExcuteTest(string connectionString, string query)
         {
             Stopwatch watch = new Stopwatch();
             watch.Start();

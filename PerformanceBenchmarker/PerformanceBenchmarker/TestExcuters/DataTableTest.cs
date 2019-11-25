@@ -4,9 +4,17 @@ using System.Diagnostics;
 
 namespace PerformanceBenchmarker.TestExcuters
 {
-    static class DataTableTest
+    class DataTableTest : ITestExcuter
     {
-        public static long ExcuteTest(string connectionString, string query)
+        public string TestTitle
+        {
+            get
+            {
+                return "DataTable";
+            }
+        }
+
+        public long ExcuteTest(string connectionString, string query)
         {
             Stopwatch watch = new Stopwatch();
             watch.Start();

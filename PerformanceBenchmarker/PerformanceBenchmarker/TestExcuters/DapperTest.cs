@@ -6,9 +6,16 @@ using PerformanceBenchmarker.Models;
 
 namespace PerformanceBenchmarker.TestExcuters
 {
-    public class DapperTest
+    public class DapperTest : ITestExcuter
     {
-        public static long ExcuteTest(string connectionString, string query)
+        public string TestTitle
+        {
+            get
+            {
+                return "Dapper";
+            }
+        }
+        public long ExcuteTest(string connectionString, string query)
         {
             Stopwatch watch = new Stopwatch();
             watch.Start();
