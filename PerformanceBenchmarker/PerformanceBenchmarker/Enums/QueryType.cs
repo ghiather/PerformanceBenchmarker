@@ -3,6 +3,7 @@
     public enum QueryType
     {
         Get,
+        Join,
         GetById
     }
 }

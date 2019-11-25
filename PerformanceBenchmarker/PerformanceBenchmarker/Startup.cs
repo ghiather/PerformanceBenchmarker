@@ -13,10 +13,12 @@ namespace PerformanceBenchmarker.TestExcuters
             List<ITestExcuter> testExcuters = new List<ITestExcuter>();
             InitializeExcuters(testExcuters);
             var getQuery = "SELECT [id], [a], [b]  FROM [Test].[dbo].[t1]";
+            var joinQuery = "SELECT t1.id, t1.a, t1.b  FROM t1 JOIN t2 ON t1.id = t2.id";
             var getByIdQuery = "SELECT [id], [a], [b]  FROM [Test].[dbo].[t1] WHERE id = @id";
             int numberOfRuns = 2;
 
             ExcuteQuery(testExcuters, getQuery, numberOfRuns, QueryType.Get);
+            ExcuteQuery(testExcuters, joinQuery, numberOfRuns, QueryType.Join);
             ExcuteQuery(testExcuters, getByIdQuery, numberOfRuns, QueryType.GetById, 3);
 
         }

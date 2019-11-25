@@ -10,3 +10,23 @@ WITH
 select k as id , 'a_' + cast (k as varchar) as a, 'b_' + cast (k/2 as varchar) as b into t1
 from nums
 where k <= 1000000
+
+
+ALTER TABLE [dbo].[t1]
+ALTER COLUMN id bigint NOT NULL;
+ALTER TABLE [dbo].[t1]
+ALTER COLUMN a varchar(500) NOT NULL;
+ALTER TABLE [dbo].[t1]
+ALTER COLUMN b varchar(500) NOT NULL;
+ALTER TABLE [dbo].[t1]
+ADD PRIMARY KEY (id);
+
+CREATE TABLE [dbo].[t2](
+	[id] [bigint],
+	[name] [varchar](255) NULL,
+	PRIMARY KEY (id),
+    FOREIGN KEY (id) REFERENCES t1(id)
+);
+
+INSERT INTO [dbo].[t2] (id, name)
+SELECT id,CONVERT(varchar(255), NEWID()) FROM [dbo].[t1]
