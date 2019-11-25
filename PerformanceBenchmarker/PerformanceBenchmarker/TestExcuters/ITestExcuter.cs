@@ -7,6 +7,7 @@ namespace PerformanceBenchmarker.TestExcuters
     interface ITestExcuter
     {
         string TestTitle { get; }
-        long ExcuteTest(string connectionString, string query);
+        long Get(string query);
+        long GetById(string query, int id);
     }
 }

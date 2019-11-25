@@ -10,7 +10,7 @@ namespace PerformanceBenchmarker
         {
             Console.WriteLine("Performance Benchmarker V1.0 \n");
             Startup testExcuter = new Startup();
-            testExcuter.Excute(3);
+            testExcuter.Excute();
             Console.ReadKey();
         }
     }
