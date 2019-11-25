@@ -1,15 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Text;
 
 namespace PerformanceBenchmarker.TestExcuters
 {
     public class Startup
     {
-        public void Excute(string connectionString, string query, int n)
+        public void Excute(int n)
         {
+            var connectionString = ConfigurationManager.ConnectionStrings["PerformanceBenchmarker"].ConnectionString;
+            var query = "SELECT [id], [a], [b]  FROM [Test].[dbo].[t1]";
+
             List<ITestExcuter> testExcuters = new List<ITestExcuter>();
-            init(testExcuters);
+            InitializeExcuters(testExcuters);
 
             foreach (ITestExcuter testExcuter in testExcuters)
             {
@@ -24,7 +28,7 @@ namespace PerformanceBenchmarker.TestExcuters
             }
         }
 
-        private void init(List<ITestExcuter> testExcuters)
+        private void InitializeExcuters(List<ITestExcuter> testExcuters)
         {
             testExcuters.Add(new DataTableTest());
             testExcuters.Add(new FastMemberTest());

@@ -16,11 +16,8 @@ namespace PerformanceBenchmarker
             DapperResults = new List<long>();
             DataReaderResults = new List<long>();
 
-            var connectionString = "Data Source=(LocalDb)\\MSSQLLocalDB;Initial Catalog=Test;Integrated Security=True";
-            var query = "SELECT [id], [a], [b]  FROM [Test].[dbo].[t1]";
-
             Startup testExcuter = new Startup();
-            testExcuter.Excute(connectionString, query, 3);
+            testExcuter.Excute(3);
 
             Console.ReadKey();
         }
