@@ -34,6 +34,7 @@ namespace PerformanceBenchmarker.TestExcuters
                     switch (queryType)
                     {
                         case QueryType.Get:
+                        case QueryType.Join:
                             {
                                 restul = testExcuter.Get(query);
                                 break;
